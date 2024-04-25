@@ -1,6 +1,5 @@
-const html = String.raw;
-
 function PlaceFirstInputField(inputNumber) {
+    const html = String.raw;
     document.getElementById("main_div").innerHTML = html `
         <div class="input_div" id="input_div_${String(inputNumber)}">
             <input type="text" class="input_field" id="input_field_${String(inputNumber)}">
@@ -27,6 +26,7 @@ function newConsoleLog() {
         retVal += arguments[i];
         retVal += " ";
     }
+    const html = String.raw;
     retVal += html `<br> undefined`;
     return retVal;
 }
@@ -38,6 +38,7 @@ function ExecCodeIn(input, inputNumber) {
     var ans = eval(input.value);
     console.log = logBackup;
 
+    const html = String.raw;
     document.getElementById(`separator_div_${String(inputNumber)}`).style.backgroundColor = "#fff";
     document.getElementById(`input_div_${String(inputNumber)}`).innerHTML = html `
         <p class="input_p" id="input_p_${String(inputNumber)}">
