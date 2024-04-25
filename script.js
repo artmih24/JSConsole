@@ -1,5 +1,7 @@
+const html = String.raw;
+
 function PlaceFirstInputField(inputNumber) {
-    document.getElementById("main_div").innerHTML = /*html*/ `
+    document.getElementById("main_div").innerHTML = html `
         <div class="input_div" id="input_div_${String(inputNumber)}">
             <input type="text" class="input_field" id="input_field_${String(inputNumber)}">
         </div>
@@ -25,7 +27,7 @@ function newConsoleLog() {
         retVal += arguments[i];
         retVal += " ";
     }
-    retVal += /*html*/ `<br> undefined`;
+    retVal += html `<br> undefined`;
     return retVal;
 }
 
@@ -37,12 +39,12 @@ function ExecCodeIn(input, inputNumber) {
     console.log = logBackup;
 
     document.getElementById(`separator_div_${String(inputNumber)}`).style.backgroundColor = "#fff";
-    document.getElementById(`input_div_${String(inputNumber)}`).innerHTML = /*html*/ `
+    document.getElementById(`input_div_${String(inputNumber)}`).innerHTML = html `
         <p class="input_p" id="input_p_${String(inputNumber)}">
             ${inp}
         </p>
     `;
-    document.getElementById("main_div").innerHTML += /*html*/ `
+    document.getElementById("main_div").innerHTML += html `
         <div class="output_div" id="output_div_${String(inputNumber)}">
             <p class="output_p" id="output_p_${String(inputNumber)}">
                 ${ans}
@@ -66,7 +68,7 @@ function ExecCodeIn(input, inputNumber) {
     newInput.focus();
     var counter = inputNumber + 1;
     newInput.addEventListener("keyup", function(event) {
-        if (event.key === "Enter") {
+        if ((event.key === "Enter") && !event.shiftKey) {
             inputNumber = ExecCodeIn(newInput, inputNumber + 1);
         }
         else if (event.key === "ArrowUp") {
@@ -93,7 +95,7 @@ var firstInput = document.getElementById(`input_field_${String(inputNumber)}`);
 firstInput.tabIndex = 1;
 firstInput.focus();
 firstInput.addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
+    if ((event.key === "Enter") && !event.shiftKey) {
         ExecCodeIn(firstInput, inputNumber);
     }
 });
