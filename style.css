@@ -7,8 +7,7 @@
     height: 100%;
 }
 
-.input_div, 
-.output_div {
+.input_div {
     /* background-color: blue; */
     position: relative; 
     top: 0; 
@@ -16,6 +15,17 @@
     width: 100%; 
     height: 24px;
     padding-top: 5px;
+}
+
+.output_div {
+    /* background-color: blue; */
+    position: relative; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 24px;
+    /* padding-top: 5px; */
+    padding-bottom: 5px;
 }
 
 .separator_div {
@@ -38,11 +48,23 @@
     font-family: Consolas;
 }
 
-.input_p,
+.input_p {
+    /* background-color: blue; */
+    position: relative; 
+    font-size: 14px;
+    width: calc(100% - 48px); 
+    margin-left: 22px;
+    margin-top: 1px;
+    border-color: #fff;
+    border-width: 0;
+    font-family: Consolas;
+}
+
 .output_p {
     /* background-color: blue; */
     position: relative; 
     font-size: 14px;
+    line-height: 2;
     width: calc(100% - 48px); 
     margin-left: 22px;
     margin-top: 1px;
