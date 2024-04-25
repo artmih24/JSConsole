@@ -2,12 +2,20 @@ function PlaceFirstInputField(inputNumber) {
     const html = String.raw;
     document.getElementById("main_div").innerHTML = html `
         <div class="input_div" id="input_div_${String(inputNumber)}">
-            <textarea rows="1" cols="1" class="input_field" id="input_field_${String(inputNumber)}">
-            </textarea>
+            <textarea rows="1" cols="0" class="input_field" id="input_field_${String(inputNumber)}"></textarea>
         </div>
         <div class="separator_div" id="separator_div_${String(inputNumber)}">
         </div>
     `;
+}
+
+function GetNewInputValLen(input) {
+    var substrs = input.value.split(/\r\n|\r|\n/);
+    var len = 0;
+    substrs.forEach(function(item) {
+        len = len > item.length ? len : item.length;
+    });
+    return len;
 }
 
 function newConsoleLog_V0() {
@@ -55,8 +63,7 @@ function ExecCodeIn(input, inputNumber) {
         <div class="separator_div" id="separator_div_${String(inputNumber)}">
         </div>
         <div class="input_div" id="input_div_${String(inputNumber + 1)}">
-            <textarea rows="1" cols="1" class="input_field" id="input_field_${String(inputNumber + 1)}">
-            </textarea>
+            <textarea rows="1" cols="0" class="input_field" id="input_field_${String(inputNumber + 1)}"></textarea>
         </div>
         <div class="separator_div" id="separator_div_${String(inputNumber + 1)}">
         </div>
@@ -85,10 +92,12 @@ function ExecCodeIn(input, inputNumber) {
             ExecCodeIn(newInput, inputNumber + 1);
         }
         else if (event.key === "Backspace") {
-            newInput.cols = newInput.value.length;
+            if (newInput.value.length > 0) {
+                newInput.cols = GetNewInputValLen(newInput);
+            }
         }
         else if (!(keysNotForIncreasingInputWidth.includes(event.key))) {
-            newInput.cols = newInput.value.length;
+            newInput.cols = GetNewInputValLen(newInput);
         }
         else if (event.key === "ArrowUp") {
             if ((counter >= 1) && (counter <= (inputNumber + 1))) {
@@ -134,10 +143,12 @@ firstInput.addEventListener("keyup", function(event) {
     //     firstInput.style.height = `${24 + (firstInput.rows - 30) * 30}px`
     // }
     else if (event.key === "Backspace") {
-        firstInput.cols = firstInput.value.length;
+        if (firstInput.value.length > 0) {
+            firstInput.cols = GetNewInputValLen(firstInput);
+        }
     }
     else if (!(keysNotForIncreasingInputWidth.includes(event.key))) {
-        firstInput.cols = firstInput.value.length;
+        firstInput.cols = GetNewInputValLen(firstInput);
     }
 });
 
