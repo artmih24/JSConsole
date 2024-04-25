@@ -71,7 +71,14 @@ function ExecCodeIn(input, inputNumber) {
     newInput.focus();
     var counter = inputNumber + 1;
     newInput.addEventListener("keyup", function(event) {
-        var keysNotForIncreasingInputWidth = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter"];
+        var keysNotForIncreasingInputWidth = [
+            "ArrowUp", 
+            "ArrowDown", 
+            "ArrowLeft", 
+            "ArrowRight", 
+            "Enter", 
+            "Shift"
+        ];
         if ((event.key === "Enter") && !event.shiftKey) {
             newInput.style.width = 'calc(100% - 48px)';
             newInput.style.overflow = 'hidden';
@@ -109,7 +116,14 @@ var firstInput = document.getElementById(`input_field_${String(inputNumber)}`);
 firstInput.tabIndex = 1;
 firstInput.focus();
 firstInput.addEventListener("keyup", function(event) {
-    var keysNotForIncreasingInputWidth = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter"];
+    var keysNotForIncreasingInputWidth = [
+        "ArrowUp", 
+        "ArrowDown", 
+        "ArrowLeft", 
+        "ArrowRight", 
+        "Enter", 
+        "Shift"
+    ];
     if ((event.key === "Enter") && !event.shiftKey) {
         firstInput.style.width = 'calc(100% - 48px)';
         firstInput.style.overflow = 'hidden';
