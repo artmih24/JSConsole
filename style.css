@@ -40,12 +40,14 @@
     /* background-color: blue; */
     position: relative; 
     font-size: 14px;
-    width: calc(100% - 48px); 
+    /* width: calc(100% - 48px);  */
+    max-width: calc(100% - 48px);
     margin-left: 20px;
     margin-top: 0;
     border-color: #fff;
     border-width: 0;
     font-family: Consolas;
+    resize: none;
 }
 
 .input_p {
@@ -54,7 +56,7 @@
     font-size: 14px;
     width: calc(100% - 48px); 
     margin-left: 22px;
-    margin-top: 1px;
+    margin-top: 2px;
     border-color: #fff;
     border-width: 0;
     font-family: Consolas;
